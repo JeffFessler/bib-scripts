@@ -4,6 +4,7 @@
 
 sed -e 's;https://dx.doi.org/;@doi ;' | \
 sed -e 's;https://doi.org/;@doi ;' | \
+sed -e 's;https://www.arxiv.org/abs/;@arxiv ;' | \
 sed -e 's;https://arxiv.org/abs/;@arxiv ;' | \
 sed -e 's;https://arxiv.org/pdf/;@arxiv ;' | \
 sed -e 's/.pdf//'

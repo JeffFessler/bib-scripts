@@ -121,17 +121,20 @@ if ($tolower)
 
 
 #
-# trick: replace fessler-96-srp with fessler:96:srp
+# tricks:
+# replace fessler-96-srp+anything.pdf with fessler-96-srp
+# replace fessler-96-srp with fessler:96:srp
+# etc.
 #
-$key0 =~ s/\,early\.pdf$//; # remove ,early.pdf
-$key0 =~ s/\,arxiv.*\.pdf$//; # remove ,arxiv*.pdf
-$key0 =~ s/\,pre\.pdf$//; # remove ,pre.pdf
+$key0 =~ s/\.pdf$//; # remove trailing .pdf
+$key0 =~ s/\+.*$//; # remove +anything
+$key0 =~ s/\,early$//; # remove ,early
+$key0 =~ s/\,arxiv.*//; # remove ,arxiv*
+$key0 =~ s/\,pre$//; # remove ,pre
 $key0 =~ s/-(\d\d)-/:$1:/	if ($key0 =~ /-\d\d-/);
 $key0 =~ s/-(\d\d\d\d)-/:$1:/	if ($key0 =~ /-\d\d\d\d-/);
 $key0 =~ s/--/::/		if ($key0 =~ /--/);
 $key0 =~ s/\/$//;	# trailing "/" if directory
-
-$key0 =~ s/\.pdf$//; # remove trailing .pdf
 
 #
 # look in each file

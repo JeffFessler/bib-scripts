@@ -5,7 +5,7 @@
 @caps = ('American', 'Arnoldi',
 'Barzilai', 'Borwein', 'Bregman',
 'BaF', 'Bayesian', 'Bloch', 'Boltzmann',
-'Carlo', 'CdZnTe', 'Chebyshev', 'Chinese', 'Cholesky', 'Compton', 'CsI',
+'Carlo', 'Cartesian', 'CdZnTe', 'Chebyshev', 'Chinese', 'Cholesky', 'Compton', 'CsI',
 'Fermat', 'Fisher', 'Fourier',
 'Ga-67', 'Gabor', 'Gaussian', 'Gibbs', 'Grassman',
 'Haar',

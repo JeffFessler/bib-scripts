@@ -1,0 +1,15 @@
+#!/bin/csh -e
+# do-echo
+# process .bib file(s) from echo.ismrm.org
+
+set ifile = 26_sedona-wip.b2
+
+cat $ifile | \
+  perl -ne 'print unless /^\@address/' | \
+  perl -ne 'print unless /^\@month/' | \
+  perl -ne 'print unless /^\@organization/' | \
+  perl -ne 'print unless /^\}$/' | \
+  sed -e 's/\}$//' | \
+  sed -e 's/^\@note Program Number: /@an /' | \
+  sed -e 's/{ISMRM Workshop on Data Sampling and Image Reconstruction}/ismrm-sample/' | \
+  cat

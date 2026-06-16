@@ -135,14 +135,27 @@ sub u2url
 		$ismrm3 = "http://archive.ismrm.org"; # / year / num4.html
 		$ismrmd = "https://doi.org/10.58530"; # / year / num4  DOI!
 
+		# starting in 2025, stuff that is >2 years old is open to public
+		# with this type of url (verified for 2018, 2021, 2022):
+		# but 2009 still has pdf
+		# https://cds.ismrm.org/protected/22MProceedings/PDFfiles/2688.html
+
 		die "bad ismrm `$_'" unless defined($in[3]);
 		$year = $in[2];
 		$page = $in[3];
+		$y2 = $year;
+		$y2 =~ s/^19//; # strip leading "19" from y2
+		$y2 =~ s/^20//; # strip leading "20" from y2
 
 		$page4 = $page;
 		if ($page =~ /^\d/) {
 			$page4 = sprintf("%04d", $page);
 		}
+
+		if ((2018 < $year) && ($year < 2024)) {
+			$url = "$ismrm1/${y2}Proceedings/files/$page4.html";
+		}
+	else {
 
 		$url = "$ismrm3/year/$page.html"; # default for 2006 and 2009-
 
@@ -156,6 +169,10 @@ sub u2url
 
 		elsif ($year == 2013) {
 		#	$url = "$ismrm1/13MProceedings/files/$page4.PDF";
+		}
+
+		elsif ($year == 2011) {
+			$url = "$ismrm3/$year/$page4.html";
 		}
 
 		elsif ($year == -2008 || $year == -2007 || $year == -2006) {
@@ -177,9 +194,9 @@ sub u2url
 		else { # try this by default:
 		#	$url = "$ismrm0/ismrm-$year/$page.pdf";
 			die "bad $_" unless defined($page4);
-		#	$url = "$ismrm3/$year/$page4.html";
 			$url = "$ismrmd/$year/$page"; # doi!
 		}
+	} # else
 
 	}
 
