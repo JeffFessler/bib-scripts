@@ -29,6 +29,9 @@ check:
 	b,check *.b2 */*.b2 */*/*.b2
 	@echo 
 #	grep -e ' $' *
+#	grep '[åÇèöü’“”]' *.b2 */*.b2 */*/*.b2
+	grep '[° ‐―–−ɑåáàÇ∆éèğîöòøρšßü]' *.b2 */*.b2 */*/*.b2 || true
+
 
 get:
 	wc -l *get* | sort -r -n
